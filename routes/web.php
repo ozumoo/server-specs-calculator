@@ -22,6 +22,11 @@ Route::prefix('/admin')->namespace('Admin')->middleware(['auth','admin'])->group
 
 	Route::resource('/clients','clientController');
 
+	Route::get('/deletePackage/{id}','specsPriceController@deletePackage')->name('deletePackage');
+	Route::get('/packages/DT','specsPriceController@packageDT')->name('packageDT');	
+	Route::resource('/packages','specsPriceController');
+
+
 	// Route::get('/clients','clientController@index')->name('clients');
 	// Route::get('/clients/DT','clientController@clientDT')->name('clientDT');
 	// Route::get('/clients/create','clientController@create');

@@ -37,16 +37,14 @@
               <i></i>
             </span>
           </a>
-          {{-- <div class="dropdown-menu" role="menu">
-            <a class="dropdown-item" href="{{ route('admin_change_password') }}"   role="menuitem"><i class="icon " aria-hidden="true"></i> تغيير كلمة السر</a>
-            
+          <div class="dropdown-menu" role="menu">
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();" role="menuitem"><i class="icon md-power" aria-hidden="true"></i> الخروج</a>
+                             document.getElementById('logout-form').submit();" role="menuitem"><i class="icon md-power" aria-hidden="true"></i> LogOut</a>
                 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-          </div> --}}
+          </div>
         </li>
         
       </ul>
