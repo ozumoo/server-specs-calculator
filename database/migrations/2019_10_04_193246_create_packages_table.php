@@ -19,6 +19,7 @@ class CreatePackagesTable extends Migration
             $table->integer('order')->nullable();
             
             $table->string('vCpu')->nullable();
+            $table->string('ram')->nullable();
             $table->string('disk')->nullable();
             $table->string('transfer_limit')->nullable();
 

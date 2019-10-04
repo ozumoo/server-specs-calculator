@@ -10,6 +10,14 @@
               <span class="site-menu-title">Clients</span>
             </a>
           </li>    
+
+
+          <li class="site-menu-item has-sub {{ Active::check('admin/packages',true) }} ">
+            <a href="{{action('Admin\packageController@index')}}">
+              <i class="site-menu-icon md-view-compact" aria-hidden="true"></i>
+              <span class="site-menu-title">Packages</span>
+            </a>
+          </li>    
   
 
         </ul>

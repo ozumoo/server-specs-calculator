@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Http\Controllers\Controller;
+use App\Package;
+use DB;
+use DataTables;
+
 
 class packageController extends Controller
 {
@@ -14,8 +18,8 @@ class packageController extends Controller
 
     public function show($id)
     {
-        $client = User::findOrFail($id);
-        return view('admin.packages.edit',compact('client'));
+        $package = Package::findOrFail($id);
+        return view('admin.packages.edit',compact('package'));
 
     }
 
@@ -28,39 +32,67 @@ class packageController extends Controller
 
     public function store()
     {
-        $client = new User;
+        $package = new Package;
         $req = Request::all();
 
-        $client->type = 'client';
-        $client->name = $req['name'];
-        $client->email = $req['email'];
-        $client->password = bcrypt($req['password']);
-        $client->save();
+        $package->order = $req['order'];
+        $package->vCpu = $req['vCpu'];
+		$package->ram = $req['ram'];
+		$package->disk = $req['disk'];
+		$package->transfer_limit = $req['transfer_limit'];
+		$package->linux_price_per_month = $req['linux_price_per_month'];
+		$package->windows_price_per_month = $req['windows_price_per_month'];
+		$package->linux_price_per_year = $req['linux_price_per_year'];
+		$package->windows_price_per_year = $req['windows_price_per_year'];
 
-        return redirect(action('Admin\clientController@index'));
+        $package->save();
+
+        return redirect(action('Admin\packageController@index'));
     }
     public function update($id)
     {
-        $client = User::findOrFail($id);   
+        $package = Package::findOrFail($id);   
         $req = Request::all();
 
-        $client->name = $req['name'];
-        $client->email = $req['email'];
-        $client->password = bcrypt($req['password']);
-        $client->save();
+        $package->order = $req['order'];
+        $package->vCpu = $req['vCpu'];
+		$package->ram = $req['ram'];
+		$package->disk = $req['disk'];
+		$package->transfer_limit = $req['transfer_limit'];
+		$package->linux_price_per_month = $req['linux_price_per_month'];
+		$package->windows_price_per_month = $req['windows_price_per_month'];
+		$package->linux_price_per_year = $req['linux_price_per_year'];
+		$package->windows_price_per_year = $req['windows_price_per_year'];
+        $package->save();
 
-        return redirect(action('Admin\clientController@index'));
+        return redirect(action('Admin\packageController@index'));
     }
 
 
 
-	public function deletePackage()
+	public function deletePackage($id)
 	{
-		
+		$package = Package::findOrFail($id);
+        $package->delete();
+        return back();	
 	}
 
 	public function packageDT()
 	{
-		
+		$user = \Auth::user() ;
+
+        $packages = Package::orderBy('order','ASC');
+
+        return DataTables::of($packages)
+        ->addColumn('actions',function($package){
+            return 
+                '<a href="'.
+                 action('Admin\packageController@show',$package->id).'"> Edit <i  title="Edit" class="icon md-edit"></i> </a>'
+                .' <span class="datatabe-action-seprator"> | </span> '.
+                '<button  onClick="deleteRow('. $package->id   .')" class="btn btn-danger btn-xs" data-title="Delete" data-book-id="3333" data-toggle="modal" data-target="#delete" > Delete <span  title="Delete" class="icon md-delete"></span></button>'
+                   ;
+        })
+        ->rawColumns(['actions'])
+        ->make(true);		
 	}
 }

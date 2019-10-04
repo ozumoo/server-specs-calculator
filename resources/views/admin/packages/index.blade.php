@@ -6,23 +6,26 @@
           <!-- Panel Table Add Row -->
           <div class="panel">
             <header class="panel-heading">
-              <h3 class="panel-title">Clients</h3>
+              <h3 class="panel-title">Packages</h3>
 
             </header>
             <div class="panel-body">
               <div class="row">
-                <a href={{action('Admin\clientController@create')}} />
+                <a href={{action('Admin\packageController@create')}} />
                     <button class="btn btn-primary">
-                         Add Client</button>
+                        Add Package</button>
                 </a>
                 <br><br>
               </div>
               <table  id="datatable" class="table table-bordered table-hover table-striped" cellspacing="0" id="exampleAddRow">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>order</th>
+                        <th>Vcpu</th>
+                        <th>ram</th>
+                        <th>disk</th>
+                        <th>linux price/month</th>
+                        <th>windows price/month</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -66,7 +69,7 @@
 
         function confirmDelete(){
             console.log('clicked again',row_id);
-            window.location = 'deleteClient/' + row_id;
+            window.location = 'deletePackage/' + row_id;
         }
     
         var block_id;
@@ -100,11 +103,14 @@
                     processing: true,
                     pageLength: 25,
                     serverSide: true,
-                    ajax: '{!! route('clientDT') !!}',
+                    ajax: '{!! route('packageDT') !!}',
                     columns: [
-                        { data: 'id', name: 'id' },
-                        { data: 'name', name: 'name' },
-                        { data: 'email', name: 'email' },
+                        { data: 'order', name: 'order' },
+                        { data: 'vCpu', name: 'vCpu' },
+                        { data: 'ram', name: 'ram' },
+                        { data: 'disk', name: 'disk' },
+                        { data: 'linux_price_per_month', name: 'linux_price_per_month' },
+                        { data: 'windows_price_per_month', name: 'windows_price_per_month' },
                         { data: 'actions', name: 'actions',searchable:false }
                     ]
             });

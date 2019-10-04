@@ -11,7 +11,15 @@ class UserstableSeeder extends Seeder
      */
     public function run()
     {
-    	$clients = [];
+    	$clients = [
+            [
+                'name' => "admin-1",
+                'email' => "admin-1@mail.com",
+                'password' => bcrypt('aaazzz121'),
+                'type' => 'admin'   ,
+            ]
+        ];
+        
         $y = 0;
         while ( $y < 10) {
             $user  = [];

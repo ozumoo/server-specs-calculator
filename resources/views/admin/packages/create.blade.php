@@ -5,7 +5,7 @@
 	          	<!-- Panel Table Add Row -->
 	          	<div class="panel">
 		            <header class="panel-heading">
-		              <h3 class="panel-title">Create</h3>
+		              <h3 class="panel-title">Create Package</h3>
 		            </header>
 		            <div class="panel-body">
 		              	<div class="row" data-plugin="matchHeight" data-by-row="true">
@@ -20,11 +20,11 @@
 								 	</div>
 								@endif
 							</div>
-							{{Form::open(['action' => 'Admin\clientController@store', 'method' => 'POST'  ,'class' => 'form-group'])}}	
+							{{Form::open(['action' => 'Admin\packageController@store', 'method' => 'POST'  ,'class' => 'form-group'])}}	
 					
-								@include('admin.clients.form_fields')		
+								@include('admin.packages.form_fields')		
 								
-								{{Form::submit('Create Client',['class' => 'form-control  btn btn-primary waves-effect '])}}	
+								{{Form::submit('Create Package',['class' => 'form-control  btn btn-primary waves-effect '])}}	
 						
 							{{Form::close()}}
 			        	</div>
