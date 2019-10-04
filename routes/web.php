@@ -11,8 +11,16 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return 'please login';
+});
+
+
+
+
+Route::prefix('/pricing')->middleware(['auth'])->group(function(){
+	Route::get('/', 'Admin\packageController@pricing');
 });
 
 

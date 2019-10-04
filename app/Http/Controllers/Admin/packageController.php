@@ -11,6 +11,14 @@ use DataTables;
 
 class packageController extends Controller
 {
+
+    public function pricing()
+    {
+        $packages = Package::orderBy('order','ASC')->get();
+        $count = count($packages);
+        return view('pricing',compact('packages','count'));
+    }
+
 	public function index()
     {
         return view('admin.packages.index');
