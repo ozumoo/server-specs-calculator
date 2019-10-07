@@ -1,6 +1,3 @@
-@php 
-    $specialties = \App\Specialty::pluck('title_ar','id');
-@endphp
 
 @extends('layouts.app')
 

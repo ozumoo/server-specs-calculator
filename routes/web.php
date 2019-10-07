@@ -13,7 +13,12 @@
 
 
 Route::get('/', function () {
-    return 'please login';
+	$user =\Auth::user();
+	if(!$user){
+		return redirect('login');
+	}else{
+		return redirect('pricing');
+	}
 });
 
 
@@ -39,5 +44,11 @@ Route::prefix('/admin')->namespace('Admin')->middleware(['auth','admin'])->group
 
 
 Auth::routes();
+Route::get('/register',function(){
+	return redirect('login');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout',function(){
+	\Auth::logout();
+    return redirect('/login');        
+});

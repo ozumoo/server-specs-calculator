@@ -122,3 +122,40 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #d2e2ff;
 }
+
+
+label {
+    width: 100%;
+}
+
+.card-input-element {
+    display: none;
+}
+
+.card-input {
+  margin: 10px;
+  padding: 10px 10px 1px;
+  border-radius: 3px;
+}
+
+.card-input:hover {
+  cursor: pointer;
+}
+
+.card-input-element:checked + .card-input {
+     border: 2px solid #d2e2fe;
+ }
+
+ .panel-heading {
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 20px;
+ }
+
+
+.pricing {
+  margin-top:20px;
+}

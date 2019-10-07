@@ -25,7 +25,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/pricing';
+    // protected $redirectTo = '/pricing';
+
+    public function redirectTo()
+    {
+        $user = \Auth::user();
+        if($user->type ==='admin'){
+            return 'admin';
+        }else{
+            return 'pricing';
+        }   
+    }
 
     /**
      * Create a new controller instance.
