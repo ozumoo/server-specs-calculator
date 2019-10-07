@@ -11,7 +11,6 @@
     </button>
     <a href="/">
       <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
-        <img class="navbar-brand-logo" src="{{asset('/logo.png')}}" title="Logo">
         <span class="navbar-brand-text hidden-xs-down"> Home</span>
       </div>
     </a>
