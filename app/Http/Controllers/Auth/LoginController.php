@@ -33,7 +33,7 @@ class LoginController extends Controller
         if($user->type ==='admin'){
             return 'admin';
         }else{
-            return 'pricing';
+            return '/';
         }   
     }
 
