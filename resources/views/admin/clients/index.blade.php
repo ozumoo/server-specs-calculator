@@ -22,6 +22,7 @@
                     <tr>
                         <th>id</th>
                         <th>Name</th>
+                        <th>Company Name</th>
                         <th>Email</th>
                         <th>Actions</th>
                     </tr>
@@ -104,6 +105,7 @@
                     columns: [
                         { data: 'id', name: 'id' },
                         { data: 'name', name: 'name' },
+                        { data: 'company_name', name: 'company_name' },
                         { data: 'email', name: 'email' },
                         { data: 'actions', name: 'actions',searchable:false }
                     ]

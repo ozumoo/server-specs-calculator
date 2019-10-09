@@ -37,6 +37,8 @@ class clientController extends Controller
 
         $client->type = 'client';
         $client->name = $req['name'];
+        $client->company_name = $req['company_name'];
+
         $client->email = $req['email'];
         $client->password = bcrypt($req['password']);
         $client->save();
@@ -49,6 +51,8 @@ class clientController extends Controller
         $req = Request::all();
 
         $client->name = $req['name'];
+        $client->company_name = $req['company_name'];
+
         $client->email = $req['email'];
         $client->password = bcrypt($req['password']);
         $client->save();

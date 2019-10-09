@@ -14,6 +14,7 @@ class UserstableSeeder extends Seeder
     	$clients = [
             [
                 'name' => "admin-1",
+                'company_name' => "",
                 'email' => "admin-1@mail.com",
                 'password' => bcrypt('aaazzz121'),
                 'type' => 'admin'   ,
@@ -24,6 +25,7 @@ class UserstableSeeder extends Seeder
         while ( $y < 10) {
             $user  = [];
             $user['name'] = "client-$y";
+            $user['company_name'] = "company-$y";
             $user['email'] = "client-$y@mail.com";
             $user['password'] = bcrypt('aaazzz121');
             $user['type'] = 'client';

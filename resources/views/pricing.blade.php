@@ -37,10 +37,8 @@
 						</div>
 					</div>
 					<div class="group">
-						<h6><b>Total Storage</b></h6><input id="total_storage" max="14" min="1" step="1" type="range">
-					</div>
-					<div class="group">
-						<h6><b>Total Transfer</b></h6><input id="total_transfer" max="14" min="1" step="1" type="range">
+						<h6><b>Extra Storage <span class="right" id="extra_storage_price">0 $</span>
+						</b></h6><input id="total_storage" min="1" max="100"  step="1" type="range">
 					</div>
 				</div>
 			</div>
@@ -88,7 +86,7 @@
 			      	</div>
 			      	<div class="group">
 						
-						<a class="col s12 waves-effect indigo accent-3 btn">Pay Now</a>
+						<a class="col s12 waves-effect indigo accent-3 btn">Add to Cart</a>
 					</div>
 				</div>
 				
@@ -121,15 +119,23 @@
             $('#windows_price_per_month').text(package.windows_price_per_month)
             $('#linux_price_per_year').text(package.linux_price_per_year)
             $('#windows_price_per_year').text(package.windows_price_per_year)
-        });
-        
-        
+        }); 
     });
     </script>
 
 	<script>
-	
-
+		$(function() {
+    	var packages = @json($packages);
+        var $document = $(document);
+        var selector = '#total_storage';
+        var $element = $(selector);
+        
+        $document.on('input', selector, function(e) {
+        	var number = e.target.value;
+            var price = 10 * number
+            $('#extra_storage_price').text( number + ' TB / +' + price + ' $')
+        }); 
+    });
     </script>
 
 </body>

@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('company_name')->nullable();
             $table->string('email')->unique();
             $table->enum('type', [
                 'client',
@@ -30,7 +31,7 @@ class CreateUsersTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
+
      * @return void
      */
     public function down()
