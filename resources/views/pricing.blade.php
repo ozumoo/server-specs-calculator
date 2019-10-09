@@ -51,7 +51,7 @@
 					          <input type="radio" name="os" class="card-input-element" />
 					            <div class="panel panel-default card-input">
 					              <div class="row">
-					              		<img class="panel-heading" src="/imgs/WindowsLogo.png" alt="">
+					              		<img class="panel-heading" src="{{asset('/imgs/WindowsLogo.png')}}" alt="">
 					      				<div class="col s12 m12" >
 											<span class="left">Per Month</span>
 											<span id="windows_price_per_month" class="right">{{$packages[0]->windows_price_per_month}}</span>
@@ -70,7 +70,7 @@
 					          	<input type="radio" name="os" class="card-input-element" />
 					            <div class="panel panel-default card-input">
 					              	<div class="row">
-					              		<img class="panel-heading" src="/imgs/linuxLogo.png" alt="">
+					              		<img class="panel-heading" src="{{asset('/imgs/linuxLogo.png')}}" alt="">
 					      				<div class="col s12 m12" >
 											<span class="left">Per Month</span>
 											<span id="linux_price_per_month" class="right">{{$packages[0]->linux_price_per_month}}</span>
