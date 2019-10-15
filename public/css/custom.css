@@ -159,3 +159,8 @@ label {
 .pricing {
   margin-top:20px;
 }
+
+
+.hidden-section{
+  display: none;
+}

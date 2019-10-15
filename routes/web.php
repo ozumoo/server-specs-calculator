@@ -16,6 +16,9 @@
 Route::prefix('/')->middleware(['auth'])->group(function(){
 	Route::get('/', 'Admin\packageController@pricing');
 	Route::get('/home', 'Admin\packageController@pricing');
+	Route::get('/invoice', 'Admin\packageController@invoice');
+
+
 
 });
 

@@ -19,6 +19,14 @@ class packageController extends Controller
         return view('pricing',compact('packages','count'));
     }
 
+
+    public function invoice()
+    {
+        $packages = Package::orderBy('order','ASC')->get();
+        $count = count($packages);
+        return view('invoice',compact('packages','count'));
+    }
+
 	public function index()
     {
         return view('admin.packages.index');

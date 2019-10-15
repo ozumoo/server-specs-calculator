@@ -59,3 +59,8 @@ div.dataTables_wrapper div.dataTables_filter input {
 .panel-default{
 	direction: rtl;
 }
+
+
+.hidden-invoice {
+	display: none;
+}
