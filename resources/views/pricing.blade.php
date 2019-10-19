@@ -11,91 +11,126 @@
 
 </head>
 <body>
-	<div class="container">
+    @include('layouts._header')
+	<div class="page container">
 		<div class="row">
-			<div class="col s12 m6">
-				<div class="wrap-selector calculator">
-					<h5 class="heading"><b>Choose your VPS</b></h5>
-					<div class="group">
-						<h6><b>Configuration</b></h6>
-						<input type="range" min="0" max="{{$count -1}}" value="0" data-rangeslider id="main_selector">
-					</div>
-					<div class="group" id="server-info-display">
-						<div class="info-holder" >
-							<span class="left">CPUs</span>
-							<span id="vcpu" class="right">{{$packages[0]->vCpu}}</span>
-						</div>
-						<div class="info-holder" >
-							<span class="left">Memory</span>
-							<span id="ram" class="right">{{$packages[0]->ram}}</span>
-						</div>
-						<div class="info-holder" >
-							<span class="left">Disk</span>
-							<span id="disk" class="right">{{$packages[0]->disk}}</span>
-						</div>
-						<div class="info-holder" >
-							<span class="left">Tranfer</span>
-							<span id="transfer" class="right">{{$packages[0]->transfer_limit}}</span>
-						</div>
-					</div>
-					<div class="group">
-						<h6><b>Extra Storage <span class="right" id="extra_storage_price">0 $</span>
-						</b></h6><input id="total_storage" min="1" max="100"  step="1" type="range">
-					</div>
-				</div>
-			</div>
-			<div class="col s12 m6">
-				<div class="wrap-selector">
-					<h5 class="heading"><b>Pricing</b></h5>
-					<div class="row pricing">
-					 	<div class="col s12 m6 ">
-					        <label>
-					          <input type="radio" name="os" class="card-input-element" />
-					            <div class="panel panel-default card-input">
-					              <div class="row">
-					              		<img class="panel-heading" src="{{asset('/imgs/WindowsLogo.png')}}" alt="">
-					      				<div class="col s12 m12" >
-											<span class="left">Per Month</span>
-											<span id="windows_price_per_month" class="right">{{$packages[0]->windows_price_per_month}}</span>
-										</div>          
-					      				<div class="col s12 m12" >
-											<span class="left">Per Year</span>
-											<span id="windows_price_per_year" class="right">{{$packages[0]->windows_price_per_year}}</span>
-										</div>          
-					              </div>
-					            </div>
-					        </label>
-				      	</div>
+            <form action="{{action('cartController@add')}}" method="POST">
+                {{-- MAIN VALUES --}}
+                <input type="hidden"  id="package_id" name="package_id" value="{{$packages[0]->id}}">
+                <input type="hidden"  id="extra_storage_space" name="extra_storage_space" value="0">
+                <input type="hidden"  id="extra_storage_price_input" name="extra_storage_price_input" value="0">
+                @csrf
 
-				      	<div class="col s12 m6 ">
-					        <label>
-					          	<input type="radio" name="os" class="card-input-element" />
-					            <div class="panel panel-default card-input">
-					              	<div class="row">
-					              		<img class="panel-heading" src="{{asset('/imgs/linuxLogo.png')}}" alt="">
-					      				<div class="col s12 m12" >
-											<span class="left">Per Month</span>
-											<span id="linux_price_per_month" class="right">{{$packages[0]->linux_price_per_month}}</span>
-										</div>          
-					      				<div class="col s12 m12" >
-											<span class="left">Per Year</span>
-											<span id="linux_price_per_year" class="right">{{$packages[0]->linux_price_per_year}}</span>
-										</div>          
-					              </div>
-					            </div>
-					        </label>
-				      	</div>
-			      	</div>
-			      	<div class="group">
-			      		<button onClick="CreatePDFfromHTML()" type="button" class="col s12 waves-effect green accent-3 btn">Export PDF</button> <br>
-			      		<br>
-			      		<br>
-			      		<button type="button" class="col s12 waves-effect indigo accent-3 btn">Add to Cart</button>
 
-					</div>
-				</div>
-				
-			</div>
+
+    			<div class="col s12 m6">
+    				<div class="wrap-selector calculator">
+    					<h5 class="heading"><b>Choose your VPS</b></h5>
+    					<div class="group">
+    						<h6><b>Configuration</b></h6>
+    						<input  type="range" min="0" max="{{$count -1}}" value="0" data-rangeslider id="main_selector">
+    					</div>
+    					<div class="group" id="server-info-display">
+    						<div class="info-holder" >
+    							<span class="left">CPUs</span>
+    							<span id="vcpu" class="right">{{$packages[0]->vCpu}}</span>
+    						</div>
+    						<div class="info-holder" >
+    							<span class="left">Memory</span>
+    							<span id="ram" class="right">{{$packages[0]->ram}}</span>
+    						</div>
+    						<div class="info-holder" >
+    							<span class="left">Disk</span>
+    							<span id="disk" class="right">{{$packages[0]->disk}}</span>
+    						</div>
+    						<div class="info-holder" >
+    							<span class="left">Tranfer</span>
+    							<span id="transfer" class="right">{{$packages[0]->transfer_limit}}</span>
+    						</div>
+    					</div>
+    					<div class="group">
+    						<h6><b>Extra Storage <span class="right" id="extra_storage_price">0 $</span>
+    						</b></h6><input id="total_storage" min="1" max="100"  step="1" type="range">
+    					</div>
+    				</div>
+    			</div>
+    			<div class="col s12 m6">
+    				<div class="wrap-selector">
+    					<h5 class="heading"><b>Pricing Per Month</b></h5>
+    					<div class="row pricing">
+    					 	<div class="col s12 m6 ">
+    					        <label>
+    					          <input type="radio" name="windows_per_month" class="card-input-element" />
+    					            <div class="panel panel-default card-input">
+    					              <div class="row">
+    					              		<img class="panel-heading" src="{{asset('/imgs/WindowsLogo.png')}}" alt="">
+    					      				<div class="col s12 m12" >
+    											<span class="left">Per Month</span>
+    											<span id="windows_price_per_month" class="right">{{$packages[0]->windows_price_per_month}}</span>
+    										</div>          
+    					              </div>
+    					            </div>
+    					        </label>
+    				      	</div>
+
+    				      	<div class="col s12 m6 ">
+    					        <label>
+    					          	<input type="radio" name="linux_per_month" class="card-input-element" />
+    					            <div class="panel panel-default card-input">
+    					              	<div class="row">
+    					              		<img class="panel-heading" src="{{asset('/imgs/linuxLogo.png')}}" alt="">
+    					      				<div class="col s12 m12" >
+    											<span class="left">Per Month</span>
+    											<span id="linux_price_per_month" class="right">{{$packages[0]->linux_price_per_month}}</span>
+    										</div>          
+    					              </div>
+    					            </div>
+    					        </label>
+    				      	</div>
+    			      	</div>
+
+                        <h5 class="heading"><b>Pricing Per Year</b></h5>
+                        <div class="row pricing">
+                            <div class="col s12 m6 ">
+                                <label>
+                                  <input type="radio" name="windows_per_year" class="card-input-element" />
+                                    <div class="panel panel-default card-input">
+                                      <div class="row">
+                                            <img class="panel-heading" src="{{asset('/imgs/WindowsLogo.png')}}" alt="">
+                                            <div class="col s12 m12" >
+                                                <span class="left">Per Year</span>
+                                                <span id="windows_price_per_year" class="right">{{$packages[0]->windows_price_per_year}}</span>
+                                            </div>          
+                                      </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="col s12 m6 ">
+                                <label>
+                                    <input type="radio" name="linux_per_year" class="card-input-element" />
+                                    <div class="panel panel-default card-input">
+                                        <div class="row">
+                                            <img class="panel-heading" src="{{asset('/imgs/linuxLogo.png')}}" alt="">
+                                            <div class="col s12 m12" >
+                                                <span class="left">Per Year</span>
+                                                <span id="linux_price_per_year" class="right">{{$packages[0]->linux_price_per_year}}</span>
+                                            </div>          
+                                      </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+    			      	<div class="group">
+    			      		<button onClick="CreatePDFfromHTML()" type="button" class="col s12 waves-effect green accent-3 btn">Export PDF</button> <br>
+    			      		<br>
+    			      		<br>
+    			      		<button type="submit" class="col s12 waves-effect indigo accent-3 btn">Add to Cart</button>
+
+    					</div>
+    				</div>	
+			    </div>
+            </form>
 		</div>
 	</div>
 	
@@ -243,6 +278,8 @@
             $('#windows_price_per_month').text(package.windows_price_per_month)
             $('#linux_price_per_year').text(package.linux_price_per_year)
             $('#windows_price_per_year').text(package.windows_price_per_year)
+
+            $('#package_id').val(package.id)
         }); 
 
 
@@ -258,6 +295,10 @@
 	        	$('#invoice-storage-info').text('extra '+ number +' TB of storage')
 	            $('#invoice-storage-price').text(price)
 	            $('#invoice-storage-price-total').text(price)
+
+                $('#extra_storage_space').val(number)
+                $('#extra_storage_price_input').val(price)
+
 
             }else{
             	$('#storage-row').addClass('hidden-section');

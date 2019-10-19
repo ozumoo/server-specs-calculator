@@ -18,6 +18,13 @@ Route::prefix('/')->middleware(['auth'])->group(function(){
 	Route::get('/home', 'Admin\packageController@pricing');
 	Route::get('/invoice', 'Admin\packageController@invoice');
 
+	// addToCard 
+	route::post('cart','cartController@add');
+	route::get('cart/delete','cartController@destroy');
+	// Card
+	route::get('cart','cartController@cart');
+	route::get('orders','cartController@orders');
+
 
 
 });

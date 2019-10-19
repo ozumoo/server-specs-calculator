@@ -1,6 +1,10 @@
 body {
-  padding-top: 2em;
+
   background: #f2f5f9;
+}
+
+.page {
+  padding-top: 3em;
 }
 .wrap-selector {
   padding: 30px 40px;
