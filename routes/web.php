@@ -22,7 +22,7 @@ Route::prefix('/')->middleware(['auth'])->group(function(){
 	route::post('cart','cartController@add');
 	route::get('cart/delete','cartController@destroy');
 	// Card
-	route::get('cart','cartController@cart');
+	route::get('cart','cartController@cart')->name('cart');
 	route::get('orders','cartController@orders');
 
 

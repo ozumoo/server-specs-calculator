@@ -11,7 +11,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="{{action('Admin\packageController@pricing')}}">Pricing</a></li>
         @if($cart)
-			<li><a href="{{action('cartController@cart')}}">Cart</a></li>
+			<li><a href="{{url('cart')}}">Cart</a></li>
         @endif
         <li><a href="/logout">LogOut</a></li>
       </ul>
