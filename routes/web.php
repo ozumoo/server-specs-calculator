@@ -21,6 +21,8 @@ Route::prefix('/')->middleware(['auth'])->group(function(){
 	// addToCard 
 	route::post('cart','cartController@add');
 	route::get('cart/delete','cartController@destroy');
+	route::get('cart/order/{id}/delete','cartController@deleteOrder');
+
 	// Card
 	route::get('cart','cartController@cart')->name('cart');
 	route::get('orders','cartController@orders');

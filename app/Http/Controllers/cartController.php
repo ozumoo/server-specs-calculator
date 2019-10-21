@@ -79,7 +79,8 @@ class cartController extends Controller
 			'total_price' => $packagePrice + $extra_storage_price,
 		]);
 
-		return redirect(action('cartController@cart'));
+		flash('Added To Cart');
+		return redirect('/');
 	}
 
 	/**
@@ -96,6 +97,22 @@ class cartController extends Controller
 		}	
 		$cart->delete();
 		return redirect('/');
+
+	}
+
+
+	/**
+	 * delete cart
+	 */
+	public function deleteOrder($id)
+	{
+		$user = \Auth::user();
+		$order = DB::table('cart_packages')
+			->delete($id);
+		if(!$order){
+			return redirect('/');
+		}	
+		return redirect('/cart');
 
 	}
 

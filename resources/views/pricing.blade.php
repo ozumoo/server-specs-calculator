@@ -8,11 +8,13 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
 	<link href="css/custom.css" media="screen,projection" rel="stylesheet" type="text/css">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 </head>
 <body>
     @include('layouts._header')
 	<div class="page container">
+        @include('flash::message')
 		<div class="row">
             <form action="{{action('cartController@add')}}" method="POST">
                 {{-- MAIN VALUES --}}
@@ -242,7 +244,10 @@
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 	<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-
+    
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
 	<script>
     $(function() {
     	var packages = @json($packages);

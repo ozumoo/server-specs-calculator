@@ -33,6 +33,8 @@
                                 <th>Cant.</th>
 
                                 <th class="right">Precio</th>
+                                <th class="right">Actions</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +50,7 @@
                                     <td class="left strong" id="invoice-specs-info">{{$order->vCpu}}  with {{$order->ram}}  and {{$order->disk}}  usage with {{$order->transfer_limit}} and {{$order->extra_storage_space}} TB of extra storage</td>
                                     <td class="left">1</td>
                                     <td class="right" id="invoice-specs-price">{{$order->total_price}}</td>
+                                    <td class="right"><a href="{{action('cartController@deleteOrder',$order->id)}}">Delete</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
